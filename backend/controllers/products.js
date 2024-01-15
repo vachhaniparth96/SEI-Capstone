@@ -1,4 +1,5 @@
 const Product = require('../models/Product');
+const Filter = require('../utility/filters');
 
 module.exports = {
     createProduct,
@@ -12,7 +13,7 @@ module.exports = {
 async function createProduct(req,res) {
     const product = await Product.create(req.body);
     try {
-        res.status(201).json({product});
+        res.status(201).json(product);
     } catch(err) {
         res.status(409).json({
             message: err.message,
@@ -23,10 +24,29 @@ async function createProduct(req,res) {
 //Get all products
 async function getProducts(req, res) {
     try {
-        const products = await Product.find();
-        res.status(200).json(products);
+        // Filter products based on query parameters using a filter utility class
+        const resultLimit = 5; //limiting the amount of results per page, will adjust after adding products to data.js
+        const productFilter = new Filter(Product, req.query).search().addFilters();
+        let products = await productFilter.query;
+        let productsCount = products.length;
+
+        // Adding pagination
+        productFilter.addPagination(resultLimit);
+        products = await productFilter.query.clone();
+        if(products.length === 0) {
+            return res.status(404).json({
+                message: "No products found for this query"
+            });
+        }
+        res.status(200).json({
+            resultLimit,
+            productsCount, 
+            products
+        });
     } catch (err) {
-        res.status(500).json({ message: err.message });
+        res.status(500).json({ 
+            message: err.message 
+        });
     }
 }
 
@@ -35,11 +55,15 @@ async function productDetails(req, res) {
     try{
         const product = await Product.findById(req.params.id);
         if(!product) {
-            return res.status(404).json({ message: "Product not found" });
+            return res.status(404).json({
+                message: "Product not found"
+            });
         }
         res.status(200).json(product);
     }catch(err){
-        res.status(500).json({ message: err.message });
+        res.status(500).json({
+            message: err.message
+        });
     }
 }
 
@@ -48,12 +72,18 @@ async function updateProduct(req, res) {
     try{
         let product = await Product.findById(req.params.id);
         if(!product) {
-            return res.status(404).json({ message: "Product not found" });
+            return res.status(404).json({
+                message: "Product not found"
+            });
         }
-        product = await Product.findByIdAndUpdate(req.params.id, req.body, { new: true });
+        product = await Product.findByIdAndUpdate(req.params.id, req.body, {
+            new: true
+        });
         res.status(200).json(product);
     }catch(err){
-        res.status(500).json({ message: err.message });
+        res.status(500).json({
+            message: err.message
+        });
     }
 }
 
@@ -62,11 +92,19 @@ async function deleteProduct(req, res) {
         try{
             let product = await Product.findById(req.params.id);
             if(!product) {
-                return res.status(404).json({ message: "Product not found" });
+                return res.status(404).json({
+                    message: "Product not found"
+                });
             }
-            product = await Product.deleteOne({ _id: req.params.id });
-            res.status(200).json({ message: "Product deleted successfully" });
+            product = await Product.deleteOne({
+                _id: req.params.id
+            });
+            res.status(200).json({
+                message: "Product deleted successfully"
+            });
         }catch(err){
-            res.status(500).json({ message: err.message });
+            res.status(500).json({
+                message: err.message
+            });
         }
     }

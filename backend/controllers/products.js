@@ -4,9 +4,11 @@ module.exports = {
     createProduct,
     getProducts,
     productDetails,
+    updateProduct,
+    deleteProduct,
 }
 
-//Create products
+//Create products. This functionality should only be accessible by an admin
 async function createProduct(req,res) {
     const product = await Product.create(req.body);
     try {
@@ -40,3 +42,31 @@ async function productDetails(req, res) {
         res.status(500).json({ message: err.message });
     }
 }
+
+//Update single product. This functionality should only be accessible by an admin
+async function updateProduct(req, res) {
+    try{
+        let product = await Product.findById(req.params.id);
+        if(!product) {
+            return res.status(404).json({ message: "Product not found" });
+        }
+        product = await Product.findByIdAndUpdate(req.params.id, req.body, { new: true });
+        res.status(200).json(product);
+    }catch(err){
+        res.status(500).json({ message: err.message });
+    }
+}
+
+//Delete a product. This functionality should only be accessible by an admin
+async function deleteProduct(req, res) {
+        try{
+            let product = await Product.findById(req.params.id);
+            if(!product) {
+                return res.status(404).json({ message: "Product not found" });
+            }
+            product = await Product.deleteOne({ _id: req.params.id });
+            res.status(200).json({ message: "Product deleted successfully" });
+        }catch(err){
+            res.status(500).json({ message: err.message });
+        }
+    }

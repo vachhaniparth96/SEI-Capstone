@@ -4,13 +4,14 @@ import { useParams } from "react-router-dom";
 import { useGetProductDetailsQuery } from "../../utilities/api/products";
 import StarRatings from "react-star-ratings";
 import Loading from "../../components/Loading";
+import { toast } from "react-hot-toast";
 
 const ProductDetails = () => {
 	const params = useParams();
 
-	const { data, isLoading } = useGetProductDetailsQuery(params?.id);
-	const product = data?.product;
-    console.log(product);
+	const { data, isLoading, error, isError } = useGetProductDetailsQuery(params?.id);
+	const product = data;
+    console.log(data);
 
 	const [activeImg, setActiveImg] = useState("");
 
@@ -22,6 +23,12 @@ const ProductDetails = () => {
 		);
 	}, [product]);
 
+    useEffect(() => {
+        if(isError) {
+            toast.error(error?.data?.message);
+        }
+    }, [isError])
+        
     if (isLoading) return <Loading />;
 	return (
 		<div className="row d-flex justify-content-around">
@@ -31,8 +38,8 @@ const ProductDetails = () => {
 						className="d-block w-100"
 						src={activeImg}
 						alt={product?.name}
-						width="340"
-						height="390"
+						width="300"
+						height="350"
 					/>
 				</div>
 				<div className="row justify-content-start mt-5">
@@ -66,7 +73,7 @@ const ProductDetails = () => {
 				<div className="d-flex">
 					<StarRatings
 						rating={product?.ratings}
-						starRatedColor="#ffb829"
+						starRatedColor="gold"
 						numberOfStars={5}
 						name="rating"
 						starDimension="24px"

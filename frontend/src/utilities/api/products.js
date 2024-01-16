@@ -5,8 +5,14 @@ export const productAPI = createApi({
     baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:4000' }),
     endpoints: (builder) => ({
         getProducts: builder.query({
-            query: () => '/products',
+            query: (params) => ({
+                url: '/products',
+                params: {
+                    page: params.page
+                }
+            })
         }),
+
         getProductDetails: builder.query({
             query: (id) => `/products/${id}`,
         }),

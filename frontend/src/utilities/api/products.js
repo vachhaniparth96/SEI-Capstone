@@ -8,9 +8,14 @@ export const productAPI = createApi({
             query: (params) => ({
                 url: '/products',
                 params: {
-                    page: params.page
-                }
-            })
+                    page: params?.page,
+                    keyword: params?.keyword,
+                    "price[gte]": params?.min,
+                    "price[lte]": params?.max,
+                    category: params?.category,
+                    "ratings[gte]": params?.ratings,
+                },
+            }),
         }),
 
         getProductDetails: builder.query({

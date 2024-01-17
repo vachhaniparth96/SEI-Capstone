@@ -2,9 +2,10 @@ const express = require('express');
 const router = express.Router();
 
 const productsCtrl = require('../controllers/products');
+const { checkAuthentication } = require('../utility/checkAuth');
 
 //GET- all products
-router.get('/', productsCtrl.getProducts);
+router.get('/', checkAuthentication, productsCtrl.getProducts);
 
 //GET- a single product
 router.get('/:id', productsCtrl.productDetails);

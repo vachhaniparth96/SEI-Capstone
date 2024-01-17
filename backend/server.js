@@ -4,12 +4,12 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors');
-
 require('dotenv').config();
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const productsRouter = require('./routes/products');
+const authRouter = require('./routes/authorization')
 
 const app = express();
 require('./config/database');
@@ -26,6 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 
 app.use('/', indexRouter);
+app.use('/', authRouter)
 app.use('/users', usersRouter);
 app.use('/products', productsRouter);
 

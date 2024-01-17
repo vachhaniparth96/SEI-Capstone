@@ -11,6 +11,9 @@ module.exports = {
 
 //Create products. This functionality should only be accessible by an admin
 async function createProduct(req,res) {
+
+    req.body.user = req.user._id
+
     const product = await Product.create(req.body);
     try {
         res.status(201).json(product);

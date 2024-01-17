@@ -17,16 +17,22 @@ async function checkAuthentication (req,res, next) {
     next();
 }
 
-// function authorizeRoles(...roles){
-//     return (req,res,next) {
-//         if(!roles.includes(req.user.role)){
-//             return next(console.error(`Users with a role of ${req.user.role} are not allowed to access this resource. Please contact an admin for assistance with this manner.`, 403))
-//         }
-//         next()
-//     }
-// }
+function authorizeRoles(...roles){
+    return (req,res,next) => {
+        if(!roles.includes(req.user.role)){
+            return next(res.status(403).json({
+                error: {
+                    status: 403, 
+                    message: `Users with a role of '${req.user.role}' are not allowed to access this resource. Please contact an admin for further assistance.`
+                }
+            }
+            ))
+        }
+        next()
+    }
+}
 
 module.exports = {
     checkAuthentication,
-    // authorizeRoles
+    authorizeRoles,
 }

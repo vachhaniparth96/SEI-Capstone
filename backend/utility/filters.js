@@ -1,5 +1,3 @@
-const { name } = require("ejs");
-
 class Filter {
     constructor(query, filter) {
         this.query = query;

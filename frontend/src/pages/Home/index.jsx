@@ -1,11 +1,11 @@
-import { useGetProductsQuery } from "../utilities/api/products";
-import Product from "../components/Product";
-import Loading from "../components/Loading";
+import { useGetProductsQuery } from "../../utilities/api/products"
+import Product from "../../components/Product";
+import Loading from "../../components/Loading";
 import { useEffect } from "react";
 import { toast } from "react-hot-toast";
-import AppPagination from "../utilities/Pagination";
+import AppPagination from "../../utilities/Pagination";
 import { useSearchParams } from "react-router-dom";
-import Filters from "../components/Filters";
+import Filters from "../../components/Filters";
 
 const Home = () => {
 

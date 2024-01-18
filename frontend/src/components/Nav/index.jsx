@@ -1,13 +1,20 @@
 import React from "react";
 import Search from "../../utilities/Search";
+import { Link } from "react-router-dom";
+import { useGetProfileQuery } from "../../utilities/api/user";
 
 const Nav = () => {
+
+	const { data } = useGetProfileQuery();
+
+	console.log("user", data)
+
 	return (
 		<div>
 			<nav className="navbar row">
 				<div className="col-12 col-md-3 ps-5">
 					<div className="navbar brand">
-						<p className="text-white">logo here</p>
+						<Link to="/" className="text-black">logo here</Link>
 					</div>
 				</div>
 				<div className="col-12 col-md-6 mt-2 mt-md-0">
@@ -39,7 +46,7 @@ const Nav = () => {
 							<p className="dropdown-item">Profile</p>
 							<p className="dropdown-item">Logout</p>
 						</div>
-						<p className="btn ms-4">Login</p>
+						<Link to="/login" className="btn ms-4">Login</Link>
 					</div>
 				</div>
 			</nav>

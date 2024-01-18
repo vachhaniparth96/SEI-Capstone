@@ -4,7 +4,7 @@ import StarRatings from "react-star-ratings";
 const Product = ({product, keyword}) => {
 
     const columnSize = keyword ? 4 : 3;
-    console.log(product)
+    // console.log(product)
 	return (
 		<div>
 			<div className={`col-sm-12 col-md-6 col-lg-${columnSize} my-3`}>

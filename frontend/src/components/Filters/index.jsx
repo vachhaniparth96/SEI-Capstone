@@ -105,8 +105,8 @@ const Filters = () => {
 				</form>
 				<hr />
 				<h5 className="mb-3">Category</h5>
-                {categories.map((category) => (
-				<div className="form-check">
+                {categories.map((category, idx) => (
+				<div className="form-check" key={idx}>
 					<input
 						className="form-check-input"
 						type="checkbox"

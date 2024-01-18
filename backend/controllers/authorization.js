@@ -17,8 +17,6 @@ async function registerUser(req,res,next) {
         password,
     })
 
-    const generateToken = user.getJWT();
-
     cookie(user, 200, res)
 }
 
@@ -44,13 +42,12 @@ async function loginUser(req,res,next) {
         return next(console.error('Invalid email or password', 401))
     }
 
-    const token = user.getJWT()
-
     cookie(user, 201, res)
 
 
 }
 
+//Logs user out and clears the token from the cookie
 async function logoutUser(req,res,next) {
     res.cookie("token", null, {
         expires: new Date(Date.now()),

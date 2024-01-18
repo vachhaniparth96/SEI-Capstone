@@ -7,7 +7,9 @@ async function checkAuthentication (req,res, next) {
     console.log("token:", token)
 
     if(!token) {
-        return next(console.error("You must login first in order to access this functionality", 401));
+        return res.status(401).json({
+            message: "You must login first in order to access this functionality",
+        });
     }
 
     const decode = jwt.verify(token, process.env.JWT_SECRET)

@@ -28,7 +28,7 @@ async function createProduct(req,res) {
 async function getProducts(req, res) {
     try {
         // Filter products based on query parameters using a filter utility class
-        const resultLimit = 5; //limiting the amount of results per page, will adjust after adding products to data.js
+        const resultLimit = 100; //limiting the amount of results per page, will adjust after adding products to data.js
         const productFilter = new Filter(Product, req.query).search().addFilters();
         let products = await productFilter.query;
         let productsCount = products.length;

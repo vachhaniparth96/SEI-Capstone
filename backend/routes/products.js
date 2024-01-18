@@ -19,4 +19,14 @@ router.delete('/admin/:id', checkAuthentication, authorizeRoles('admin'), produc
 //POST- create a product (Admin Only)
 router.post('/admin/new', checkAuthentication, authorizeRoles('admin'), productsCtrl.createProduct);
 
+//PUT- creating/updating reviews
+router.put('/reviews', checkAuthentication, productsCtrl.createReview);
+
+//DELETE- delete a review (Admin Only)
+router.delete('/reviews', checkAuthentication, authorizeRoles('admin'), productsCtrl.deleteReview)
+
+//GET- all reviews for a product
+router.get('/reviews/:id', checkAuthentication, productsCtrl.allReviews);
+
+
 module.exports = router;

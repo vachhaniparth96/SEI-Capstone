@@ -64,17 +64,16 @@ const PaymentMethod = () => {
 
 	return (
 		<div>
-			<CheckoutSteps shipping confirmOrder payment />
-
-			<div className="row wrapper">
-				<div className="col-10 col-lg-5">
+			<h1 className="text-center text-3xl text-white mb-5">Payment Method</h1>
+			<div className="row wrapper justify-center">
+				<div className="col-10 col-lg-5 jce">
 					<form
-						className="shadow rounded bg-body"
+						className="shadow rounded bg-body text-center"
 						onSubmit={submitHandler}
 					>
-						<h2 className="mb-4">Select Payment Method</h2>
+						<h2 className="mb-4 text-center">Select Payment Method</h2>
 
-						<div className="form-check">
+						<div className="form-check mx-24">
 							<input
 								className="form-check-input"
 								type="radio"
@@ -94,7 +93,7 @@ const PaymentMethod = () => {
 						<button
 							id="shipping_btn"
 							type="submit"
-							className="btn py-2 w-100"
+							className="btn py-2 w-100 hover:bg-yellow-400"
 							disabled={isLoading}
 						>
 							CONTINUE

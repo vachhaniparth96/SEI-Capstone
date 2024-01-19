@@ -64,7 +64,7 @@ const Filters = () => {
 
 	return (
 		<div>
-			<div className="border p-3 filter">
+			<div className="border p-3 filter bg-white ">
 				<h3>Filters</h3>
 				<hr />
 				<h5 className="filter-heading mb-3">Price</h5>
@@ -97,7 +97,7 @@ const Filters = () => {
 							/>
 						</div>
 						<div className="col">
-							<button type="submit" className="btn btn-primary">
+							<button type="submit" className="btn btn-primary text-black hover:bg-yellow-400">
 								GO
 							</button>
 						</div>

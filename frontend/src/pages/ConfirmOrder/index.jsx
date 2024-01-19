@@ -12,8 +12,8 @@ const ConfirmOrder = () => {
 		caluclateOrderCost(cartItems);
 
 	return (
-		<div>
-			<CheckoutSteps shipping confirmOrder />
+		<div className="text-white">
+			<h1 className="text-center text-3xl">Confirm Order</h1>
 			<div className="row d-flex justify-content-between">
 				<div className="col-12 col-lg-8 mt-5 order-confirm">
 					<h4 className="mb-3">Shipping Info</h4>

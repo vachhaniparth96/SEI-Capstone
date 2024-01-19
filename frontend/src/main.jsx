@@ -8,7 +8,7 @@ import { store } from './utilities/store'
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Router>
     <Provider store={store}>
-      <App />
+      <App className="bg-slate-800"/>
     </Provider>
   </Router>,
 )

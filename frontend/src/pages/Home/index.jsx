@@ -44,11 +44,11 @@ const Home = () => {
                         <Filters />
                     </div>
 				<div className="col-6 col-md-9">
-					<h1 id="products_heading" className="text-secondary">
+					<h1 id="products_heading" className="text-secondary pt-5 text-white">
 						{keyword ? `Search Results for "${keyword}". Total Results: ${data?.productsCount}` : "All Products"}
 					</h1>
-					<section id="products" className="mt-5">
-						<div className="row">
+					<section id="products" className="mt-3">
+						<div className="grid grid-cols-3 gap-4">
 							{data?.products?.map((product,idx) => (
 								<Product product={product} key={idx} />
 							))}

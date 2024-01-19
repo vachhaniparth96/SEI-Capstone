@@ -31,7 +31,7 @@ const Search = () => {
 						value={keyword}
                         onChange={(e)=> setKeyword(e.target.value)}
 					></input>
-					<button id="search_btn" className="btn" type="submit">
+					<button id="search_btn" className="btn bg-yellow-400 hover:bg-yellow-400" type="submit">
 						Search
 					</button>
 				</div>

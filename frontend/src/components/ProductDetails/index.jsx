@@ -71,7 +71,7 @@ const ProductDetails = () => {
 	if (isLoading) return <Loading />;
 
 	return (
-		<div className="row d-flex justify-content-around">
+		<div className="row d-flex justify-content-around text-white">
 			<div className="col-12 col-lg-5 img-fluid" id="product_image">
 				<div className="p-3">
 					<img
@@ -136,7 +136,7 @@ const ProductDetails = () => {
 					</span>
 					<input
 						type="number"
-						className="form-control count d-inline"
+						className="form-control count d-inline w-auto text-center m-2"
 						value={quantity}
 						readonly
 					/>
@@ -150,7 +150,7 @@ const ProductDetails = () => {
 				<button
 					type="button"
 					id="cart_btn"
-					className="btn btn-primary d-inline ms-4"
+					className="btn btn-primary d-inline ms-4 text-black bg-yellow-400 hover:bg-yellow-400"
 					disabled={product?.stock === 0}
 					onClick={sendToCart}
 				>

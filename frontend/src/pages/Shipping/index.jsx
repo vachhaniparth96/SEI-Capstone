@@ -40,14 +40,14 @@ const Shipping = () => {
 
 	return (
         <div>
-		<CheckoutSteps shipping />
-		<div className="row wrapper mb-5">
+		<h1 className="text-center text-3xl">Shipping</h1>
+		<div className="row wrapper mb-5 justify-center text-center">
 			<div className="col-10 col-lg-5">
 				<form
 					className="shadow rounded bg-body"
 					onSubmit={submiHandler}
 				>
-					<h2 className="mb-4">Shipping Info</h2>
+					<h2 className="mb-4 text-center pt-3">Shipping Info</h2>
 					<div className="mb-3">
 						<label htmlFor="address_field" className="form-label">
 							Address
@@ -134,7 +134,7 @@ const Shipping = () => {
 					<button
 						id="shipping_btn"
 						type="submit"
-						className="btn w-100 py-2"
+						className="btn w-100 py-2 mb-2 hover:bg-yellow-400"
 					>
 						CONTINUE
 					</button>

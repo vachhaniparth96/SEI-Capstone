@@ -6,7 +6,7 @@ import { Toaster } from 'react-hot-toast'
 
 function App() {
   return (
-    <div>
+    <div className=' bg-slate-800'>
       <Toaster position="top-center" />
       <Nav />
       <div className="container">

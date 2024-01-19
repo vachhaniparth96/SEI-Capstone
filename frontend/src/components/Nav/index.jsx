@@ -3,6 +3,7 @@ import Search from "../../utilities/Search";
 import { Link } from "react-router-dom";
 import { useGetMeQuery } from "../../utilities/api/user";
 import { useSelector } from "react-redux";
+import { IoCartOutline } from "react-icons/io5";
 
 const Nav = () => {
 
@@ -14,25 +15,24 @@ const Nav = () => {
 
 	return (
 		<div>
-			<nav className="navbar row">
+			<nav className="navbar flex bg-indigo-950">
 				<div className="col-12 col-md-3 ps-5">
-					<div className="navbar brand">
-						<Link to="/" className="text-black">logo here</Link>
+					<div className="navbar brand pr-5">
+						<Link to="/" className="text-white"><img src="/Star_Shop_White.png"></img></Link>
 					</div>
 				</div>
 				<div className="col-12 col-md-6 mt-2 mt-md-0">
 					<Search />
 				</div>
-				<div className="col-12 col-md-3 mt-4 mt-md-0 text-center">
-				<Link to="/cart" style={{ textDecoration: "none" }}>
-					<span className="ms-3" id="cart">
-						Cart
-					</span>
-					<span className="ms-1" id="cart_count">
-						{cartItems?.length}
-					</span>
-				</Link>
-					<div className="ms-4 dropdown">
+				<div className=" flex col-12 col-md-3 mt-5 mt-md-0 text-center">
+					<div className="flex">
+					<Link to="/cart" style={{ textDecoration: "none" }}>
+						<p className=" flex ms-7 text-white text-2xl" id="cart">
+						<IoCartOutline className="text-3xl"/> {cartItems?.length}
+						</p>
+					</Link>
+					</div>
+					{/* <div className="ms-4 dropdown">
 						<button
 							className="btn dropdown-toggle text-white"
 							type="button"
@@ -40,7 +40,7 @@ const Nav = () => {
 							data-bs-toggle="dropdown"
 							aria-expanded="false"
 						>
-							<span>User Dropdown Menu</span>
+							<span>Dropdown Menu</span>
 						</button>
 						<div
 							className="dropdown-menu w-100"
@@ -52,7 +52,7 @@ const Nav = () => {
 							<p className="dropdown-item">Logout</p>
 						</div>
 						<Link to="/login" className="btn ms-4">Login</Link>
-					</div>
+					</div> */}
 				</div>
 			</nav>
 		</div>

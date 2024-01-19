@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { setCartItem, removeCartItem } from "../../utilities/cartSlice";
+import { FaRegTrashCan } from "react-icons/fa6";
 
 const Cart = () => {
 	const dispatch = useDispatch();
@@ -47,17 +48,17 @@ const Cart = () => {
 	};
 
 	return (
-		<div>
-			<h2 className="mt-5">
+		<div className="text-white">
+			<h2 className="mt-5 pb-3">
 				Your Cart: <b>{cartItems?.length} items</b>
 			</h2>
 
-			<div className="row d-flex justify-content-between">
+			<div className="row d-flex justify-content-between pt-">
 				<div className="col-12 col-lg-8">
 					{cartItems?.map((item) => (
 						<>
 							<hr />
-							<div className="cart-item" data-key="product1">
+							<div className="cart-item pt-3 pb-3" data-key="product1">
 								<div className="row">
 									<div className="col-4 col-lg-3">
 										<img
@@ -78,7 +79,7 @@ const Cart = () => {
 											${item?.price}
 										</p>
 									</div>
-									<div className="col-4 col-lg-3 mt-4 mt-lg-0">
+									<div className="col-4 col-lg-4 mt-4 mt-lg-0">
 										<div className="stockCounter d-inline">
 											<span
 												className="btn btn-danger minus"
@@ -94,7 +95,7 @@ const Cart = () => {
 											</span>
 											<input
 												type="number"
-												className="form-control count d-inline"
+												className="form-control count d-inline w-16 text-center m-1"
 												value={item?.quantity}
 												readonly
 											/>
@@ -111,17 +112,17 @@ const Cart = () => {
 												+{" "}
 											</span>
 										</div>
-									</div>
-									<div className="col-4 col-lg-1 mt-4 mt-lg-0">
 										<i
 											id="delete_cart_item"
-											className="fa fa-trash btn btn-danger"
+											className="fa fa-trash btn btn-danger m-1"
 											onClick={() =>
 												removeCartItemHandler(
 													item?.product
 												)
 											}
-										>X</i>
+										><FaRegTrashCan className="text-2xl"/>
+										</i>
+									
 									</div>
 								</div>
 							</div>
@@ -132,16 +133,15 @@ const Cart = () => {
 
 				<div className="col-12 col-lg-3 my-4">
 					<div id="order_summary">
-						<h4>Order Summary</h4>
+						<h4 className="pb-2">Order Summary</h4>
 						<hr />
-						<p>
+						<p className="pt-2">
 							Units:{" "}
 							<span className="order-summary-values">
 								{cartItems?.reduce(
 									(acc, item) => acc + item?.quantity,
 									0
-								)}{" "}
-								(Units)
+								)}
 							</span>
 						</p>
 						<p>
@@ -160,7 +160,7 @@ const Cart = () => {
 						<hr />
 						<button
 							id="checkout_btn"
-							className="btn btn-primary w-100"
+							className="btn btn-primary w-100 mt-2"
 							onClick={checkoutHandler}
 						>
 							Check out

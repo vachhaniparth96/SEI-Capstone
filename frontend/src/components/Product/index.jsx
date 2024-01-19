@@ -3,14 +3,13 @@ import { Link } from "react-router-dom";
 import StarRatings from "react-star-ratings";
 const Product = ({product, keyword}) => {
 
-    const columnSize = keyword ? 4 : 3;
     // console.log(product)
 	return (
 		<div>
-			<div className={`col-sm-12 col-md-6 col-lg-${columnSize} my-3`}>
+			<div>
 				<div className="card p-3 rounded">
 					<img
-                                    className="card-img-top mx-auto"
+                                    className="card-img-top mx-auto w-auto h-32 object-fit"
                                     src={product?.images[0].url}
                                     alt={product?.name}
                                 />
@@ -26,7 +25,7 @@ const Product = ({product, keyword}) => {
 							</span>
 						</div>
 						<p className="card-text mt-2">${product?.price}</p>
-						<Link to={`/product/${product?._id}`} id="view_btn" className="btn btn-block">
+						<Link to={`/product/${product?._id}`} id="view_btn" className=" card hover:bg-yellow-400 btn btn-block">
 						View Details
 						</Link>
 					</div>

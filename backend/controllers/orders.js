@@ -14,13 +14,14 @@ module.exports = {
 async function newOrder(req,res,next) {
     const { orderItems, shippingInfo, price, tax, shippingCost, total, paymentInfo, paymentMethod } = req.body
     
-    const order = await Order.create({ orderItems, shippingInfo, price, tax, shippingCost, total, paymentInfo, paymentMethod, user: req.user._id })
+    const order = await Order.create({ orderItems, shippingInfo, itemsPrice, taxAmount, shippingAmount, totalAmount, paymentInfo, paymentMethod, user: req.user._id })
 
     res.status(200).json({
         order,
     })
 }
 
+//Fetching order details
 async function orderDetails(req,res,next) {
     const order = await Order.findById(req.params.id).populate("user", "name email")
 
@@ -35,6 +36,7 @@ async function orderDetails(req,res,next) {
     })
 }
 
+//Fetching user specific orders
 async function userOrders(req,res,next) {
     const order = await Order.find( {user: req.user._id })
 
@@ -44,6 +46,7 @@ async function userOrders(req,res,next) {
 
 }
 
+//Admin Only- fetching all orders
 async function allOrders(req,res,next) {
     const orders = await Order.find()
 
@@ -52,6 +55,7 @@ async function allOrders(req,res,next) {
     })
 }
 
+//Admin Only- updating orders
 async function updateOrders(req,res,next) {
     const order = await Order.findById(req.params.id)
 
@@ -92,6 +96,7 @@ async function updateOrders(req,res,next) {
     })
 }
 
+//Admin Only- deleting orders
 async function deleteOrder(req,res,next) {
     const order = await Order.findById(req.params.id)
 

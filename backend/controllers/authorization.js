@@ -1,60 +1,66 @@
-const User = require('../models/User')
-const bcrpyt = require('bcryptjs')
-const cookie = require('../utility/cookie')
+const User = require("../models/User");
+const cookie = require("../utility/cookie");
 
 module.exports = {
-    registerUser,
-    loginUser,
-    logoutUser,
+	registerUser,
+	loginUser,
+	logoutUser,
+};
+
+//Registering User into database
+async function registerUser(req, res, next) {
+	const { name, email, password } = req.body;
+
+	const user = await User.create({
+		name,
+		email,
+		password,
+	});
+
+	cookie(user, 200, res);
 }
 
-async function registerUser(req,res,next) {
-    const { name, email, password } = req.body
+//Logging user in after comparing user entered information with information stored in the database
+async function loginUser(req, res, next) {
+	const { email, password } = req.body;
 
-    const user = await User.create({
-        name,
-        email,
-        password,
-    })
+	//ensuring both email and password fields are filled out when logging in
+	if (!email || !password) {
+		return res.status(400).json({
+			message: "Please enter email and password",
+		});
+	}
 
-    cookie(user, 200, res)
-}
+	//verifying if email + password combination exists in database
+	const user = await User.findOne({ email }).select("+password");
 
-async function loginUser(req,res,next) {
-    const { email, password } = req.body
+	//returning error if combination does not exist
+	if (!user) {
+		return res.status(401).json({
+			message: "Error: Invalid email or password",
+		});
+	}
 
-    //ensuring both email and password fields are filled out when logging in
-    if(!email || !password) {
-        return next(console.error("Please enter email and password", 400));
-    }
+	const verifyPassword = await user.passwordMatch(password);
+	//verifying if entered password matches password in database
+	if (!verifyPassword) {
+		return res.status(401).json({
+			message: "Error: Invalid email or password",
+		});
+	}
 
-    //verifying if email + password combination exists in database
-    const user = await User.findOne({ email }).select("+password")
-
-    //returning error if combination does not exist
-    if(!user) {
-        return next(console.error("Invalid email or password", 401))
-    } 
-
-    const verifyPassword = await user.passwordMatch(password)
-    //verifying if entered password matches password in database
-    if(!verifyPassword) {
-        return next(console.error('Invalid email or password', 401))
-    }
-
-    cookie(user, 201, res)
-
-
+	cookie(user, 201, res);
 }
 
 //Logs user out and clears the token from the cookie
-async function logoutUser(req,res,next) {
-    res.cookie("token", null, {
-        expires: new Date(Date.now()),
-        httpOnly: true,
-    });
+async function logoutUser(req, res, next) {
+	res.cookie("token", null, {
+		expires: new Date(Date.now()),
+		httpOnly: true,
+	});
 
-    res.status(200).json({
-        message: "You have successfully logged out"
-    });
+	res.status(200).json({
+		message: "Logged Out",
+	});
 }
+        

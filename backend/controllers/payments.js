@@ -9,8 +9,7 @@ module.exports = {
 	stripeWebhook,
 };
 
-// Create stripe checkout session   =>  payment/checkout_session
-
+// Create stripe checkout session   
 async function stripeCheckoutSession(req, res, next) {
 	const body = req?.body;
 
@@ -25,6 +24,7 @@ async function stripeCheckoutSession(req, res, next) {
 				},
 				unit_amount: item?.price * 100,
 			},
+			//Stripe uses its own formatting to interpret tax rates. This formatting is generated on the dev dashboard on stripe after entering the necessary information
 			tax_rates: ["txr_1Oa8JRG90QAMAghrhh7b0F0b"],
 			quantity: item?.quantity,
 		};
@@ -32,6 +32,7 @@ async function stripeCheckoutSession(req, res, next) {
 
 	const shippingInfo = body?.shippingInfo;
 
+	//Just like tax rates, Stripe uses its own formatting to interpret shipping rates.
 	const shipping_rate =
 		body?.itemsPrice >= 200
 			? "shr_1Oa8HFG90QAMAghrSSUd29TF"
@@ -53,13 +54,12 @@ async function stripeCheckoutSession(req, res, next) {
 		line_items,
 	});
 
-	console.log(session);
-
 	res.status(200).json({
 		url: session.url,
 	});
 }
 
+//Getting order items to use in the Stripe Webhook
 async function getOrderItems(line_items) {
 	return new Promise((resolve, reject) => {
 		let cartItems = [];
@@ -83,7 +83,7 @@ async function getOrderItems(line_items) {
 	});
 }
 
-// Create new order after payment   =>  /api/v1/payment/webhook
+// Stripe Webhook to handle the payment
 async function stripeWebhook(req, res, next) {
 	try {
 		const signature = req.headers["stripe-signature"];
@@ -136,7 +136,7 @@ async function stripeWebhook(req, res, next) {
 
 			await Order.create(orderData);
 
-			res.status(200).json({ success: true });
+			res.status(200).json({ success: true }).end();
 		}
 	} catch (error) {
 		console.log("Error => ", error);

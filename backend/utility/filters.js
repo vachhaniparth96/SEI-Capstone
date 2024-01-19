@@ -1,9 +1,11 @@
+//Filter class with several utility functions to allow for searching capabilities, filtering by price, category, or ratings, and for pagination.
 class Filter {
     constructor(query, filter) {
         this.query = query;
         this.filter = filter;
     }
 
+    //search function that will find all products that contain whatever is search, case insensitive
     search() {
         const keyword = this.filter.keyword ? {
             name: {
@@ -35,6 +37,7 @@ class Filter {
         return this;
     }
 
+    //Adds a limit to what is displayed per page and spreads the remaining products across different pages
     addPagination(resultLimit) {
         const current = Number(this.filter.page) || 1;
         const offset = (current - 1) * resultLimit;

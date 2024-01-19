@@ -12,7 +12,7 @@ module.exports = {
     deleteReview
 }
 
-//Create products. This functionality should only be accessible by an admin
+//Admin Only- Create products
 async function createProduct(req,res) {
 
     req.body.user = req.user._id
@@ -31,7 +31,7 @@ async function createProduct(req,res) {
 async function getProducts(req, res) {
     try {
         // Filter products based on query parameters using a filter utility class
-        const resultLimit = 100; //limiting the amount of results per page, will adjust after adding products to data.js
+        const resultLimit = 12; //limiting the amount of results per page, will adjust after adding products to data.js
         const productFilter = new Filter(Product, req.query).search().addFilters();
         let products = await productFilter.query;
         let productsCount = products.length;
@@ -73,7 +73,7 @@ async function productDetails(req, res) {
     }
 }
 
-//Update single product. This functionality should only be accessible by an admin
+//Admin Only- Update single product.
 async function updateProduct(req, res) {
     try{
         let product = await Product.findById(req.params.id);
@@ -93,7 +93,7 @@ async function updateProduct(req, res) {
     }
 }
 
-//Delete a product. This functionality should only be accessible by an admin
+//Admin Only- Delete a product
 async function deleteProduct(req, res) {
         try{
             let product = await Product.findById(req.params.id);

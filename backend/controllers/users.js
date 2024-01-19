@@ -9,6 +9,7 @@ module.exports = {
     deleteUsers,
 }
 
+//Getting user profile
 async function getUsers(req,res,next) {
     const user = await User.findById(req?.user?._id)
 
@@ -17,6 +18,7 @@ async function getUsers(req,res,next) {
     })
 }
 
+//Updating user profile
 async function updateProfile(req,res,next) {
     const newData = {
         name: req.body.name,
@@ -32,6 +34,7 @@ async function updateProfile(req,res,next) {
     
 }
 
+//Admin Only- getting all user profiles
 async function getAllUsers(req,res,next) {
     const users = await User.find();
 
@@ -40,6 +43,7 @@ async function getAllUsers(req,res,next) {
     })
 }
 
+//Admin Only- getting details on a specific user
 async function userDetails(req,res,next) {
     const user = await User.findById(req.params.id);
 
@@ -54,6 +58,7 @@ async function userDetails(req,res,next) {
     })
 }
 
+//Admin Only- updating a specific user profile
 async function updateUsers(req,res,next) {
     const newData = {
         name: req.body.name,
@@ -70,6 +75,7 @@ async function updateUsers(req,res,next) {
     
 }
 
+//Admin Only- Deleting users
 async function deleteUsers(req,res,next) {
     const user = await User.findById(req.params.id);
 

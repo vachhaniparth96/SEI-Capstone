@@ -2,10 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import CheckoutSteps from "../../components/CheckoutSteps";
 import { caluclateOrderCost } from "../../utilities/orderCost";
-import {
-	useCreateNewOrderMutation,
-	useStripeCheckoutSessionMutation,
-} from "../../utilities/api/order";
+import { useCreateNewOrderMutation, useStripeCheckoutSessionMutation } from "../../utilities/api/order";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
@@ -26,6 +23,7 @@ const PaymentMethod = () => {
 	useEffect(() => {
 		if (checkoutData) {
 			window.location.href = checkoutData?.url;
+            console.log(checkoutData)
 		}
 
 		if (checkoutError) {
@@ -39,7 +37,7 @@ const PaymentMethod = () => {
 		}
 
 		if (isSuccess) {
-			navigate("/");
+			navigate("/me/orders?order_success=true");
 		}
 	}, [error, isSuccess]);
 
@@ -59,7 +57,7 @@ const PaymentMethod = () => {
 				taxAmount: taxPrice,
 				totalAmount: totalPrice,
 			};
-
+            
 			stripeCheckoutSession(orderData);
 		}
 	};
@@ -81,13 +79,13 @@ const PaymentMethod = () => {
 								className="form-check-input"
 								type="radio"
 								name="payment_mode"
-								id="codradio"
-								value="COD"
-								onChange={(e) => setMethod("COD")}
+								id="cardradio"
+								value="Card"
+								onChange={(e) => setMethod("Card")}
 							/>
 							<label
 								className="form-check-label"
-								htmlFor="codradio"
+								htmlFor="cardradio"
 							>
 								Card - VISA, MasterCard
 							</label>

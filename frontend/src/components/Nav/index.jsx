@@ -1,11 +1,14 @@
 import React from "react";
 import Search from "../../utilities/Search";
 import { Link } from "react-router-dom";
-import { useGetProfileQuery } from "../../utilities/api/user";
+import { useGetMeQuery } from "../../utilities/api/user";
+import { useSelector } from "react-redux";
 
 const Nav = () => {
 
-	const { data } = useGetProfileQuery();
+	const { data } = useGetMeQuery();
+	const { cartItems } = useSelector((state) => state.cart);
+	
 
 	console.log("user", data)
 
@@ -21,12 +24,14 @@ const Nav = () => {
 					<Search />
 				</div>
 				<div className="col-12 col-md-3 mt-4 mt-md-0 text-center">
+				<Link to="/cart" style={{ textDecoration: "none" }}>
 					<span className="ms-3" id="cart">
-						Cart Here
+						Cart
 					</span>
 					<span className="ms-1" id="cart_count">
-						0
+						{cartItems?.length}
 					</span>
+				</Link>
 					<div className="ms-4 dropdown">
 						<button
 							className="btn dropdown-toggle text-white"

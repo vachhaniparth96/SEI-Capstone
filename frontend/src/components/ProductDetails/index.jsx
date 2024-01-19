@@ -5,15 +5,21 @@ import { useGetProductDetailsQuery } from "../../utilities/api/products";
 import StarRatings from "react-star-ratings";
 import Loading from "../../components/Loading";
 import { toast } from "react-hot-toast";
+import { useDispatch } from "react-redux";
+import { setCartItem } from "../../utilities/cartSlice";
 
 const ProductDetails = () => {
 	const params = useParams();
+	const dispatch = useDispatch();
 
-	const { data, isLoading, error, isError } = useGetProductDetailsQuery(params?.id);
-	const product = data;
-    console.log(data);
-
+	const [quantity, setQuantity] = useState(1);
 	const [activeImg, setActiveImg] = useState("");
+
+	const { data, isLoading, error, isError } = useGetProductDetailsQuery(
+		params?.id
+	);
+
+	const product = data;
 
 	useEffect(() => {
 		setActiveImg(
@@ -23,13 +29,47 @@ const ProductDetails = () => {
 		);
 	}, [product]);
 
-    useEffect(() => {
-        if(isError) {
-            toast.error(error?.data?.message);
-        }
-    }, [isError])
-        
-    if (isLoading) return <Loading />;
+	useEffect(() => {
+		if (isError) {
+			toast.error(error?.data?.message);
+		}
+	}, [isError]);
+
+	const increaseQty = () => {
+		const count = document.querySelector(".count");
+		if (count.valueAsNumber >= product?.stock) {
+			return;
+		}
+		const qty = count.valueAsNumber + 1;
+		setQuantity(qty);
+	};
+
+	const decreaseQty = () => {
+		const count = document.querySelector(".count");
+		if (count.valueAsNumber <= 1) {
+			return;
+		}
+		const qty = count.valueAsNumber - 1;
+		setQuantity(qty);
+	};
+
+	const sendToCart = () => {
+		const cartItem = {
+			product: product?._id,
+			name: product?.name,
+			stock: product?.stock,
+			price: product?.price,
+			image: product?.images[0]?.url,
+			quantity,
+		};
+		dispatch(setCartItem(cartItem));
+		toast.success("Item added to cart");
+	};
+
+	console.log(data);
+
+	if (isLoading) return <Loading />;
+
 	return (
 		<div className="row d-flex justify-content-around">
 			<div className="col-12 col-lg-5 img-fluid" id="product_image">
@@ -88,20 +128,31 @@ const ProductDetails = () => {
 
 				<p id="product_price">${product?.price}</p>
 				<div className="stockCounter d-inline">
-					<span className="btn btn-danger minus">-</span>
+					<span
+						className="btn btn-danger minus"
+						onClick={decreaseQty}
+					>
+						-
+					</span>
 					<input
 						type="number"
 						className="form-control count d-inline"
-						value="1"
+						value={quantity}
 						readonly
 					/>
-					<span className="btn btn-primary plus">+</span>
+					<span
+						className="btn btn-primary plus"
+						onClick={increaseQty}
+					>
+						+
+					</span>
 				</div>
 				<button
 					type="button"
 					id="cart_btn"
 					className="btn btn-primary d-inline ms-4"
-					disabled=""
+					disabled={product?.stock === 0}
+					onClick={sendToCart}
 				>
 					Add to Cart
 				</button>

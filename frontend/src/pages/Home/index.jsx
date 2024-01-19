@@ -49,7 +49,7 @@ const Home = () => {
 					</h1>
 					<section id="products" className="mt-5">
 						<div className="row">
-							{data?.products?.map((product,idx, keyword) => (
+							{data?.products?.map((product,idx) => (
 								<Product product={product} key={idx} />
 							))}
 						</div>

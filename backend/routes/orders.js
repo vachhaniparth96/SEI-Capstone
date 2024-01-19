@@ -5,9 +5,9 @@ const router = express.Router();
 
 const ordersCtrl = require('../controllers/orders')
 
-router.post('/orders/new', checkAuthentication, ordersCtrl.newOrder)
+router.post('/orders/new', ordersCtrl.newOrder)
 
-router.get('/orders/:id', checkAuthentication, ordersCtrl.orderDetails)
+router.get('/orders/:id', ordersCtrl.orderDetails)
 
 router.get('/users/profile/orders', checkAuthentication, ordersCtrl.userOrders)
 

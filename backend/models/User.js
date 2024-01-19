@@ -1,7 +1,6 @@
 const mongoose = require('mongoose')
 const bcrpyt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
-const crypto = require('crypto')
 
 const Schema = mongoose.Schema;
 

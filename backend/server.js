@@ -11,6 +11,7 @@ const usersRouter = require('./routes/users');
 const productsRouter = require('./routes/products');
 const authRouter = require('./routes/authorization')
 const ordersRouter = require('./routes/orders')
+const paymentsRouter = require('./routes/payments')
 
 const app = express();
 require('./config/database');
@@ -20,7 +21,11 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
-app.use(express.json());
+app.use(express.json({
+  verify: (req,res,buf) => {
+    req.rawBody = buf.toString()
+  }
+}));
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
@@ -29,6 +34,7 @@ app.use(cors());
 app.use('/', indexRouter);
 app.use('/', authRouter)
 app.use('/', ordersRouter)
+app.use('/', paymentsRouter)
 app.use('/users', usersRouter);
 app.use('/products', productsRouter);
 

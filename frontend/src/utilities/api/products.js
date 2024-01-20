@@ -1,8 +1,9 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+const { VITE_BASE_URL }= import.meta.env;
 
 export const productAPI = createApi({
     reducerPath: 'productAPI',
-    baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:4000' }),
+    baseQuery: fetchBaseQuery({ baseUrl: VITE_BASE_URL }),
     endpoints: (builder) => ({
         getProducts: builder.query({
             query: (params) => ({
@@ -21,26 +22,6 @@ export const productAPI = createApi({
         getProductDetails: builder.query({
             query: (id) => `/products/${id}`,
         }),
-        // createProduct: builder.mutation({
-        //     query: (product) => ({
-        //         url: '/products',
-        //         method: 'POST',
-        //         body: product,
-        //     }),
-        // }),
-        // updateProduct: builder.mutation({
-        //     query: (product) => ({
-        //         url: `/products/${product.id}`,
-        //         method: 'PUT',
-        //         body: product,
-        //     }),
-        // }),
-        // deleteProduct: builder.mutation({
-        //     query: (id) => ({
-        //         url: `/products/${id}`,
-        //         method: 'DELETE',
-        //     }),
-        // }),
     })
 })
 

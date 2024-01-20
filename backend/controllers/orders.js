@@ -12,7 +12,7 @@ module.exports = {
 
 //New order
 async function newOrder(req,res,next) {
-    const { orderItems, shippingInfo, price, tax, shippingCost, total, paymentInfo, paymentMethod } = req.body
+    const { orderItems, shippingInfo, itemsPrice, taxAmount, shippingAmount, totalAmount, paymentInfo, paymentMethod } = req.body
     
     const order = await Order.create({ orderItems, shippingInfo, itemsPrice, taxAmount, shippingAmount, totalAmount, paymentInfo, paymentMethod, user: req.user._id })
 

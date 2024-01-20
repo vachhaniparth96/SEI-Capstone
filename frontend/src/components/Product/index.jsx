@@ -1,9 +1,9 @@
-import React from "react";
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
 import StarRatings from "react-star-ratings";
 const Product = ({product, keyword}) => {
 
-    // console.log(product)
 	return (
 		<div>
 			<div>

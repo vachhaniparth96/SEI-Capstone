@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/jsx-key */
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
@@ -138,7 +140,7 @@ const ProductDetails = () => {
 						type="number"
 						className="form-control count d-inline w-auto text-center m-2"
 						value={quantity}
-						readonly
+						readOnly
 					/>
 					<span
 						className="btn btn-primary plus"

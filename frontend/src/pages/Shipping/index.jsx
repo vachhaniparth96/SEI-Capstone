@@ -3,7 +3,6 @@ import { countries } from "countries-list";
 import { useDispatch, useSelector } from "react-redux";
 import { saveShippingInfo } from "../../utilities/cartSlice";
 import { useNavigate } from "react-router-dom";
-import CheckoutSteps from "../../components/CheckoutSteps";
 
 const Shipping = () => {
 	const countriesList = Object.values(countries);

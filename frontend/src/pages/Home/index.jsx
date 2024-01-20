@@ -38,7 +38,6 @@ const Home = () => {
     if (isLoading) return <Loading />;
 	return (
 		<div>
-			{/* <MetaData title={"Buy Best Products Online"} /> */}
 			<div className="row">
                     <div className="col-6 col-md-3 mt-5 mb-5">
                         <Filters />

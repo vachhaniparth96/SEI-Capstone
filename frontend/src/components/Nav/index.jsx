@@ -1,4 +1,3 @@
-import React from "react";
 import Search from "../../utilities/Search";
 import { Link } from "react-router-dom";
 import { useGetMeQuery } from "../../utilities/api/user";
@@ -32,27 +31,6 @@ const Nav = () => {
 						</p>
 					</Link>
 					</div>
-					{/* <div className="ms-4 dropdown">
-						<button
-							className="btn dropdown-toggle text-white"
-							type="button"
-							id="dropdownMenuButton1"
-							data-bs-toggle="dropdown"
-							aria-expanded="false"
-						>
-							<span>Dropdown Menu</span>
-						</button>
-						<div
-							className="dropdown-menu w-100"
-							aria-labelledby="dropdownMenuButton"
-						>
-							<p className="dropdown-item">Dashboard</p>
-							<p className="dropdown-item">Orders</p>
-							<p className="dropdown-item">Profile</p>
-							<p className="dropdown-item">Logout</p>
-						</div>
-						<Link to="/login" className="btn ms-4">Login</Link>
-					</div> */}
 				</div>
 			</nav>
 		</div>

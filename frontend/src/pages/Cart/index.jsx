@@ -1,4 +1,3 @@
-import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { setCartItem, removeCartItem } from "../../utilities/cartSlice";
@@ -58,74 +57,29 @@ const Cart = () => {
 					{cartItems?.map((item) => (
 						<>
 							<hr />
-							<div className="cart-item pt-3 pb-3" data-key="product1">
-								<div className="row">
-									<div className="col-4 col-lg-3">
-										<img
-											src={item?.image}
-											alt="Laptop"
-											height="90"
-											width="115"
-										/>
-									</div>
-									<div className="col-5 col-lg-3">
-										<Link to={`/products/${item?.product}`}>
-											{" "}
-											{item?.name}{" "}
-										</Link>
-									</div>
-									<div className="col-4 col-lg-2 mt-4 mt-lg-0">
-										<p id="card_item_price">
-											${item?.price}
-										</p>
-									</div>
-									<div className="col-4 col-lg-4 mt-4 mt-lg-0">
-										<div className="stockCounter d-inline">
-											<span
-												className="btn btn-danger minus"
-												onClick={() =>
-													decreseQty(
-														item,
-														item.quantity
-													)
-												}
-											>
-												{" "}
-												-{" "}
-											</span>
-											<input
-												type="number"
-												className="form-control count d-inline w-16 text-center m-1"
-												value={item?.quantity}
-												readonly
-											/>
-											<span
-												className="btn btn-primary plus"
-												onClick={() =>
-													increseQty(
-														item,
-														item.quantity
-													)
-												}
-											>
-												{" "}
-												+{" "}
-											</span>
+								<div className="cart-item pt-3 pb-3" data-key="product1">
+									<div className="row">
+										<div className="col-4 col-lg-3">
+											<img src={item?.image} alt={item?.name} height="90" width="115"/>
 										</div>
-										<i
-											id="delete_cart_item"
-											className="fa fa-trash btn btn-danger m-1"
-											onClick={() =>
-												removeCartItemHandler(
-													item?.product
-												)
-											}
-										><FaRegTrashCan className="text-2xl"/>
-										</i>
-									
+										<div className="col-5 col-lg-3">
+											<Link to={`/products/${item?.product}`}>{item?.name}</Link>
+										</div>
+										<div className="col-4 col-lg-2 mt-4 mt-lg-0">
+											<p id="card_item_price">${item?.price}</p>
+										</div>
+										<div className="col-4 col-lg-4 mt-4 mt-lg-0">
+											<div className="stockCounter d-inline">
+												<span className="btn btn-danger minus" onClick={() => decreseQty(item, item.quantity)}>-</span>
+												<input type="number" className="form-control count d-inline w-16 text-center m-1" value={item?.quantity} readOnly/>
+												<span className="btn btn-primary plus" onClick={() => increseQty(item, item.quantity)}>+</span>
+											</div>
+											<i id="delete_cart_item" className="fa fa-trash btn btn-danger m-1" onClick={() => removeCartItemHandler(item?.product)}>
+												<FaRegTrashCan className="text-2xl" />
+											</i>
+										</div>
 									</div>
 								</div>
-							</div>
 							<hr />
 						</>
 					))}
@@ -136,7 +90,7 @@ const Cart = () => {
 						<h4 className="pb-2">Order Summary</h4>
 						<hr />
 						<p className="pt-2">
-							Units:{" "}
+							Units:
 							<span className="order-summary-values">
 								{cartItems?.reduce(
 									(acc, item) => acc + item?.quantity,
@@ -145,7 +99,7 @@ const Cart = () => {
 							</span>
 						</p>
 						<p>
-							Est. total:{" "}
+							Est. total:
 							<span className="order-summary-values">
 								$
 								{cartItems

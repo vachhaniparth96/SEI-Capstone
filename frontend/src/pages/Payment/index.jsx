@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import CheckoutSteps from "../../components/CheckoutSteps";
 import { caluclateOrderCost } from "../../utilities/orderCost";
 import { useCreateNewOrderMutation, useStripeCheckoutSessionMutation } from "../../utilities/api/order";
 import { toast } from "react-hot-toast";

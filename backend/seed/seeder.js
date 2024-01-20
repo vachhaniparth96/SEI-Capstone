@@ -9,6 +9,7 @@ async function seed() {
         await mongoose.connect(process.env.DATABASE_URL); //Connects to the database
         await Product.deleteMany(); //Clears the database of all the previous products
 
+        //Durstenfeld shuffle algorithm to shuffle the entries in data.js
         function shuffleArray(array) {
             for (var i = array.length - 1; i > 0; i--) {
                 var j = Math.floor(Math.random() * (i + 1));
@@ -19,7 +20,7 @@ async function seed() {
         }
 
         shuffleArray(products)
-        
+
         console.log("Products successfully deleted");
         await Product.insertMany(products) //Inserts the new product information from data.js into the database
         console.log("Products successfully added");

@@ -21,6 +21,7 @@ const PaymentMethod = () => {
 
 	useEffect(() => {
 		if (checkoutData) {
+			console.log(checkoutData, "checkoutData?")
 			window.location.href = checkoutData?.url;
             console.log(checkoutData)
 		}
@@ -43,7 +44,7 @@ const PaymentMethod = () => {
 	const submitHandler = (e) => {
 		e.preventDefault();
 
-		const { itemsPrice, shippingPrice, taxPrice, totalPrice } =
+		const { itemsPrice, shippingAmount, taxAmount, totalAmount } =
 			caluclateOrderCost(cartItems);
 
 		if (method === "Card") {
@@ -52,9 +53,9 @@ const PaymentMethod = () => {
 				shippingInfo,
 				orderItems: cartItems,
 				itemsPrice,
-				shippingAmount: shippingPrice,
-				taxAmount: taxPrice,
-				totalAmount: totalPrice,
+				shippingAmount: shippingAmount,
+				taxAmount: taxAmount,
+				totalAmount: totalAmount,
 			};
             
 			stripeCheckoutSession(orderData);

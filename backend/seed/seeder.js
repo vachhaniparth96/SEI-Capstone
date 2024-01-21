@@ -27,7 +27,7 @@ async function seed() {
         process.exit();
     }
     catch(err){
-        console.log(err);
+        (err);
         process.exit();
     }
 }

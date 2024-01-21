@@ -5,8 +5,6 @@ const jwt = require("jsonwebtoken")
 async function checkAuthentication (req,res, next) {
     const { token } = req.cookies;
 
-    console.log("token:", token)
-
     if(!token) {
         return res.status(401).json({
             message: "You must login first in order to access this functionality",
@@ -14,7 +12,6 @@ async function checkAuthentication (req,res, next) {
     }
 
     const decode = jwt.verify(token, process.env.JWT_SECRET)
-    console.log(decode)
     req.user = await User.findById(decode.id);
 
     next();

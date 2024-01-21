@@ -27,7 +27,6 @@ const Home = () => {
     ratings !== null && (params.ratings = ratings);
 
 	const { data, isLoading, error, isError} = useGetProductsQuery(params);
-	console.log(data, isLoading);
     
     useEffect(() => {
         if(isError) {

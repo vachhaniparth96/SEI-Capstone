@@ -52,7 +52,6 @@ userSchema.methods.getJWT = function() {
 
 //Comparing entered password to registered password
 userSchema.methods.passwordMatch = async function(submittedPass) {
-    console.log(submittedPass, this.password)
     return await bcrpyt.compare(submittedPass, this.password);
 }
 

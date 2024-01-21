@@ -8,9 +8,6 @@ const Nav = () => {
 
 	const { data } = useGetMeQuery();
 	const { cartItems } = useSelector((state) => state.cart);
-	
-
-	console.log("user", data)
 
 	return (
 		<div>

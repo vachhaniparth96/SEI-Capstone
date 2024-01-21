@@ -19,12 +19,11 @@ const PaymentMethod = () => {
 		{ data: checkoutData, error: checkoutError, isLoading },
 	] = useStripeCheckoutSessionMutation();
 
-	console.log(cartItems, "cartItems")
 	useEffect(() => {
 		if (checkoutData) {
-			console.log(checkoutData, "checkoutData?")
+			(checkoutData, "checkoutData?")
 			window.location.href = checkoutData?.url;
-            console.log(checkoutData)
+            (checkoutData)
 		}
 
 		if (checkoutError) {
@@ -58,7 +57,7 @@ const PaymentMethod = () => {
 				taxAmount: taxPrice,
 				totalAmount: totalPrice,
 			};
-            console.log(orderData, "orderData")
+			
 			stripeCheckoutSession(orderData);
 		}
 	};

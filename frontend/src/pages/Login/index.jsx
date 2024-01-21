@@ -19,8 +19,7 @@ const Login = () => {
 
         
     }
-    console.log(data)
-    
+	
     useEffect(() => {
         if (error) {
             toast.error(error?.data?.message);

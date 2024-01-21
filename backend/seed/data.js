@@ -1,7 +1,7 @@
 module.exports = [
 	{
 		name: "LUKE 1977 Volcombe Leather Wallet, Brown",
-		price: 40.0,
+		price: 40.00,
 		description:
 			"A luxurious way to keep your cash and cards organised. We love the contrast of textured and smooth leather on this design from LUKE 1977. The wallet hosts multiple card slots and a note sleeve at the interior along with a coin section which is secured with a press stud. It's detailed with contrast stitching and completed with the brand's matte lion head rivet on the front, LUKE tri-colour trim tape and debossed LUKE 1977 inside.",
 		ratings: 0,
@@ -27,7 +27,7 @@ module.exports = [
 	},
 	{
 		name: "Versace VE4415U 52 Dark Grey & Black Sunglasses",
-		price: 345.0,
+		price: 345.00,
 		description:
 			"Elevate your style with Versace VE4415U sunglasses. These exquisite shades feature a solid dark grey lenses that will add a touch of sophistication to any look. The black frame with polished finish exudes timeless elegance, while the cat eye shape adds a hint of playfulness. Crafted from high-quality materials, these sunglasses offer both comfort and durability.",
 		ratings: 0,
@@ -53,7 +53,7 @@ module.exports = [
 	},
 	{
 		name: "Cashmere & Silk Wrap",
-		price: 99.0,
+		price: 99.00,
 		description:
 			"Delicate eyelash fringe frames an airy, ethereal scarf woven from soft silk and cashmere.",
 		ratings: 4.25,
@@ -79,7 +79,7 @@ module.exports = [
 	},
 	{
 		name: "TAG HEUER FORMULA 1",
-		price: 1700.0,
+		price: 1700.00,
 		description:
 			"A classic three-hand men’s quartz watch with oversized “6” and “12” on a sunray blue dial – inspired by Formula One, embodying TAG Heuer’s unique racing heritage and commitment to excellence under pressure.",
 		ratings: 0,
@@ -105,7 +105,7 @@ module.exports = [
 	},
 	{
 		name: "GG PATTERN SILK TIE",
-		price: 220.0,
+		price: 220.00,
 		description:
 			"First used in the 1970s, the GG logo was an evolution of the original Gucci rhombi design from the 1930s, and from then it's been an established symbol of Gucci's heritage. The Web stripe, shown as a subtle detail on the inside, acts as a symbol of membership and a recognisable Gucci code.",
 		ratings: 0,
@@ -131,7 +131,7 @@ module.exports = [
 	},
 	{
 		name: '1" MILLER REVERSIBLE BELT',
-		price: 178.0,
+		price: 178.00,
 		description:
 			"A striking expression of workmanship and artistry. The Miller Reversible Belt fastens with a graphic Double T and pulls double duty with a different color on each side. Simply pop off the buckle and flip the strap, then reattach the buckle on the other end — two accessories in one. Crafted in partnership with a Leather Working Group-certified tannery, supporting high standards in leather manufacturing and chemical management.",
 		ratings: 4.9,
@@ -630,7 +630,7 @@ module.exports = [
 	},
 	{
 		name: "Bose - QuietComfort 45 Wireless Noise Cancelling Over-the-Ear Headphones - Triple Black",
-		price: 229.0,
+		price: 229.00,
 		description:
 			"The minute you put on Bose QuietComfort 45 Wireless Noise Cancelling Headphones, you feel it — the iconic quiet that allows you to concentrate on your music or work on your passion projects. Plus, with these wireless headphones, you can experience the comfort and crystal-clear sound that can only come from Bose headphones. The soft, plush cushions of these Bose over ear wireless headphones seal you in. Then you flip the switch and whoosh — the world fades. The music starts. It’s love at first listen. The original Bluetooth headphones are back, now with signature active noise cancelling technology and premium comfort. Plus proprietary technology for deep, clear sound, and adjustable EQ so you can tune your music to your liking. Bose QuietComfort 45 over-ear headphones. An icon reborn.",
 		ratings: 4.7,
@@ -898,7 +898,7 @@ module.exports = [
 	},
 	{
 		name: "The Reversible Mat 5mm",
-		price: 49.0,
+		price: 49.00,
 		description:
 			"From hot to hatha, this natural rubber mat has a grippy top layer that helps you find balance.",
 		ratings: 3.6,
@@ -973,7 +973,7 @@ module.exports = [
 	},
 	{
 		name: "Head Boom Pro 2022 Tennis Racquet",
-		price: 129.0,
+		price: 129.00,
 		description:
 			"The HEAD Boom Pro 2022 Tennis Racquet represents a bold new direction from the brand`s current catalog. HEAD integrated an Auxetic Construction in the racquet bridge. The technology improves the feel and stability of the racquet when the ball contacts the strings. By delivering ideal feedback with improved vibration dampening, players can go after the ball with confidence. The Boom Pro`s cross section features a Morph Beam design, which pairs an elongated shaft for flex and feel with a thicker hoop section for greater access to power and stability. The racquet has different head shape than the other HEAD performance frames and it is designed with a uniform string pattern to make the string bed perform more consistently. HEAD`s Graphene Inside tech remains at the 12, 9, and 3 o`clock positions, as well is within the throat to deliver stability and ball speed. With a 10.9 ounce unstrung weight, 98 square inch head, 16x19 string pattern, and slimmer beam design, the Boom Pro has all the makings of an advanced player frame, but with a little more oomph!",
 		ratings: 4.6,
@@ -999,7 +999,7 @@ module.exports = [
 	},
 	{
 		name: "Grand Canyon 5",
-		price: 699.0,
+		price: 699.00,
 		description:
 			"Expand your urban adventures to the trails with confidence thanks to the balanced geometry, thoughtful components, and plush 100 mm suspension of the Grand Canyon 5.",
 		ratings: 4.1,
@@ -1100,7 +1100,7 @@ module.exports = [
 	},
 	{
 		name: "NOMAD Grill & Smoker",
-		price: 695.0,
+		price: 695.00,
 		description:
 			"A premium-quality charcoal barbecue grill & smoker with unparalleled portability. Now with twice the ventilation, this 28-pound carrying case houses two heavy-duty, diecast cookboxes and delivers up to 425 square inches of grilling space. NOMAD packs a punch in the durability department with interior cast aluminum construction. Matching strength & sturdiness with versatility, NOMAD is all-purpose performance. Whether your next adventure calls for searing, smoking, baking or barbecuing — from the backyard, to the backcountry — NOMAD has you covered. Note:  Single grate included. Second Cooking Grate sold separately.",
 		ratings: 5,
@@ -1126,7 +1126,7 @@ module.exports = [
 	},
 	{
 		name: "Brisa Toucan Weather-Resistant Double Classic Hammock",
-		price: 99.9,
+		price: 99.90,
 		description:
 			"Bring South American joie de vivre to your home: Brisa is perfectly at home in the backyard, garden or patio thanks to its unique, carefully calibrated outdoor fabric.",
 		ratings: 4.7,

@@ -29,7 +29,6 @@ async function stripeCheckoutSession(req, res, next) {
 			quantity: item?.quantity,
 		};
 	});
-
 	const shippingInfo = body?.shippingInfo;
 
 	//Just like tax rates, Stripe uses its own formatting to interpret shipping rates.
@@ -40,8 +39,8 @@ async function stripeCheckoutSession(req, res, next) {
 
 	const session = await stripe.checkout.sessions.create({
 		payment_method_types: ["card"],
-		success_url: `${process.env.FRONTEND_URL}`,
-		cancel_url: `${process.env.FRONTEND_URL}`,
+		success_url: `https://main--starshopcapstone.netlify.app/`,
+		cancel_url: `https://main--starshopcapstone.netlify.app/cart`,
 		customer_email: req?.user?.email,
 		client_reference_id: req?.user?._id?.toString(),
 		mode: "payment",
@@ -139,6 +138,6 @@ async function stripeWebhook(req, res, next) {
 			res.status(200).json({ success: true }).end();
 		}
 	} catch (error) {
-		console.log("Error => ", error);
+		("Error => ", error);
 	}
 }

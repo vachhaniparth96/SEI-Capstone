@@ -19,9 +19,10 @@ const PaymentMethod = () => {
 		{ data: checkoutData, error: checkoutError, isLoading },
 	] = useStripeCheckoutSessionMutation();
 
+	console.log(cartItems, "cartItems")
 	useEffect(() => {
 		if (checkoutData) {
-			console.log(checkoutData, "checkoutData")
+			console.log(checkoutData, "checkoutData?")
 			window.location.href = checkoutData?.url;
             console.log(checkoutData)
 		}

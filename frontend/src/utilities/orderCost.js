@@ -10,8 +10,8 @@ export const caluclateOrderCost = (cartItems) => {
 
 	return {
 		itemsPrice: Number(itemsPrice).toFixed(2),
-		shippingPrice: Number(shippingPrice).toFixed(2),
-		taxPrice: Number(taxPrice).toFixed(2),
-		totalPrice: Number(totalPrice).toFixed(2),
+		shippingPrice,
+		taxPrice,
+		totalPrice,
 	};
 };

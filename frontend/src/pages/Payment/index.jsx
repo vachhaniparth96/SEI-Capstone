@@ -38,7 +38,7 @@ const PaymentMethod = () => {
 		}
 
 		if (isSuccess) {
-			navigate("/me/orders?order_success=true");
+			navigate("?order_success=true");
 		}
 	}, [error, isSuccess]);
 
@@ -58,7 +58,7 @@ const PaymentMethod = () => {
 				taxAmount: taxPrice,
 				totalAmount: totalPrice,
 			};
-            
+            console.log(orderData, "orderData")
 			stripeCheckoutSession(orderData);
 		}
 	};
